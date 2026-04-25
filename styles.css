@@ -1,0 +1,405 @@
+/* =========================================================
+   VS Code Mobile Cheat Sheet — styles
+   Fonts: Days One (display), Droid Sans (body), Fira Code (mono)
+   Palette: dark charcoal gradient → cream-yellow text
+   ========================================================= */
+
+:root {
+  /* Charcoal gradient stops */
+  --bg-1: #0d1014;
+  --bg-2: #16191f;
+  --bg-3: #1c2026;
+  --surface: rgba(255, 245, 210, 0.04);
+  --surface-2: rgba(255, 245, 210, 0.07);
+  --border: rgba(255, 245, 210, 0.10);
+  --border-strong: rgba(255, 245, 210, 0.18);
+
+  /* Cream-yellow text scale */
+  --text: #fff5d2;          /* primary */
+  --text-soft: #f6ecbe;     /* secondary */
+  --text-mute: #c9bf99;     /* tertiary */
+  --accent: #ffd76b;        /* warm highlight */
+  --accent-2: #f7a93b;      /* deeper accent */
+
+  /* Mono code background */
+  --code-bg: rgba(0, 0, 0, 0.35);
+  --code-border: rgba(255, 215, 107, 0.18);
+
+  /* Type sizes — generous for readability with glasses */
+  --fs-base: 17px;          /* phone body */
+  --fs-mono: 16px;
+  --fs-h1: clamp(2rem, 6vw, 3.4rem);
+  --fs-h2: clamp(1.5rem, 4.2vw, 2.2rem);
+  --fs-takeaway: clamp(1rem, 2.4vw, 1.1rem);
+
+  --radius: 14px;
+  --radius-sm: 8px;
+  --maxw: 1180px;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: "Droid Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: var(--fs-base);
+  line-height: 1.55;
+  color: var(--text);
+  background:
+    radial-gradient(1200px 800px at 80% -10%, #21262d 0%, transparent 60%),
+    radial-gradient(900px 700px at -10% 110%, #1a1f26 0%, transparent 55%),
+    linear-gradient(160deg, var(--bg-1) 0%, var(--bg-2) 45%, var(--bg-3) 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+::selection { background: var(--accent); color: #1a1a1a; }
+
+/* ---------- Header ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.85rem clamp(1rem, 4vw, 2rem);
+  background: rgba(13, 16, 20, 0.78);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+  color: var(--text);
+}
+.brand-logo {
+  width: 34px; height: 34px;
+  display: grid; place-items: center;
+  border-radius: 9px;
+  background: linear-gradient(135deg, #2a2f37, #15181d);
+  border: 1px solid var(--border-strong);
+  color: var(--accent);
+}
+.brand-name {
+  font-family: "Days One", "Droid Sans", sans-serif;
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+.brand-name .dim { color: var(--text-mute); font-weight: 400; }
+
+/* Hamburger */
+.menu-btn {
+  appearance: none;
+  background: transparent;
+  border: 1px solid var(--border-strong);
+  border-radius: 10px;
+  width: 44px; height: 44px;
+  display: grid; place-items: center;
+  cursor: pointer;
+  color: var(--text);
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+.menu-btn:hover { background: var(--surface); border-color: var(--accent); }
+.menu-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.menu-btn .bars {
+  display: block;
+  width: 22px; height: 2px;
+  background: var(--text);
+  position: relative;
+  border-radius: 2px;
+}
+.menu-btn .bars::before,
+.menu-btn .bars::after {
+  content: "";
+  position: absolute; left: 0;
+  width: 22px; height: 2px;
+  background: var(--text);
+  border-radius: 2px;
+}
+.menu-btn .bars::before { top: -7px; }
+.menu-btn .bars::after  { top:  7px; }
+
+/* ---------- TOC drawer ---------- */
+.toc-overlay {
+  position: fixed; inset: 0;
+  background: rgba(5, 7, 10, 0.6);
+  backdrop-filter: blur(2px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+  z-index: 90;
+}
+.toc-overlay.open { opacity: 1; pointer-events: auto; }
+.toc-drawer {
+  position: fixed;
+  top: 0; right: 0;
+  height: 100dvh;
+  width: min(360px, 86vw);
+  background: linear-gradient(180deg, #14171c 0%, #0e1115 100%);
+  border-left: 1px solid var(--border-strong);
+  box-shadow: -20px 0 60px rgba(0,0,0,0.5);
+  transform: translateX(100%);
+  transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+}
+.toc-drawer.open { transform: translateX(0); }
+.toc-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+}
+.toc-head h2 {
+  margin: 0;
+  font-family: "Days One", sans-serif;
+  font-size: 1.05rem;
+  color: var(--accent);
+  letter-spacing: 0.02em;
+}
+.toc-close {
+  appearance: none;
+  background: transparent;
+  border: 1px solid var(--border-strong);
+  color: var(--text);
+  width: 36px; height: 36px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.1rem;
+}
+.toc-close:hover { background: var(--surface); }
+.toc-list {
+  list-style: none;
+  margin: 0;
+  padding: 0.5rem 0.5rem 2rem;
+  overflow-y: auto;
+  flex: 1;
+}
+.toc-list a {
+  display: block;
+  padding: 0.85rem 1rem;
+  color: var(--text-soft);
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.toc-list a:hover,
+.toc-list a:focus-visible {
+  background: var(--surface);
+  color: var(--accent);
+  outline: none;
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  padding: clamp(2.5rem, 7vw, 5rem) clamp(1rem, 4vw, 2rem) clamp(2rem, 5vw, 3rem);
+  max-width: var(--maxw);
+  margin: 0 auto;
+  text-align: center;
+}
+.hero-eyebrow {
+  display: inline-block;
+  font-family: "Fira Code", monospace;
+  font-size: 0.85rem;
+  color: var(--accent);
+  border: 1px solid var(--code-border);
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  margin-bottom: 1.25rem;
+  background: rgba(255, 215, 107, 0.06);
+}
+.hero h1 {
+  font-family: "Days One", sans-serif;
+  font-size: var(--fs-h1);
+  line-height: 1.05;
+  margin: 0 0 0.75rem;
+  letter-spacing: -0.01em;
+  background: linear-gradient(180deg, #fff5d2 0%, #ffd76b 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.hero p.lede {
+  margin: 0 auto;
+  max-width: 60ch;
+  color: var(--text-soft);
+  font-size: clamp(1rem, 2.4vw, 1.15rem);
+}
+.hero-meta {
+  margin-top: 1.5rem;
+  font-family: "Fira Code", monospace;
+  font-size: 0.85rem;
+  color: var(--text-mute);
+}
+
+/* ---------- Sections ---------- */
+main {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 clamp(1rem, 4vw, 2rem) 4rem;
+}
+section.cheat {
+  padding-top: clamp(2.5rem, 6vw, 4rem);
+  scroll-margin-top: 80px;
+}
+section.cheat h2 {
+  font-family: "Days One", sans-serif;
+  font-size: var(--fs-h2);
+  letter-spacing: -0.01em;
+  margin: 0 0 1.25rem;
+  color: var(--accent);
+}
+section.cheat .section-rule {
+  height: 1px;
+  background: linear-gradient(90deg, var(--accent) 0%, transparent 70%);
+  margin-bottom: 1.5rem;
+  opacity: 0.6;
+}
+
+/* ---------- Two-column table ---------- */
+.cheat-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  font-size: 1rem;
+}
+.cheat-table thead th {
+  background: rgba(255, 215, 107, 0.08);
+  color: var(--accent);
+  font-family: "Days One", sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-align: left;
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid var(--border-strong);
+}
+.cheat-table tbody td {
+  padding: 0.9rem 1rem;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+  vertical-align: top;
+}
+.cheat-table tbody tr:last-child td { border-bottom: none; }
+.cheat-table tbody tr:nth-child(even) td { background: rgba(255, 245, 210, 0.02); }
+.cheat-table .key {
+  font-family: "Fira Code", "JetBrains Mono", monospace;
+  font-size: var(--fs-mono);
+  color: var(--text);
+  background: var(--code-bg);
+  border: 1px solid var(--code-border);
+  border-radius: var(--radius-sm);
+  padding: 0.18rem 0.5rem;
+  white-space: nowrap;
+  display: inline-block;
+}
+.cheat-table .desc { color: var(--text-soft); }
+
+/* Mobile: card list (portrait) */
+@media (max-width: 640px) and (orientation: portrait) {
+  .cheat-table { display: block; border: none; background: transparent; padding: 0; }
+  .cheat-table thead { display: none; }
+  .cheat-table tbody { display: block; }
+  .cheat-table tr {
+    display: block;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 0.85rem 1rem;
+    margin-bottom: 0.85rem;
+  }
+  .cheat-table td {
+    display: block;
+    padding: 0;
+    border: none !important;
+    background: transparent !important;
+  }
+  .cheat-table td[data-label]::before {
+    content: attr(data-label);
+    display: block;
+    font-family: "Days One", sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin: 0.6rem 0 0.25rem;
+  }
+  .cheat-table td:first-child[data-label]::before { margin-top: 0; }
+  .cheat-table tbody tr:nth-child(even) td { background: transparent !important; }
+}
+
+/* Code block (settings.json) */
+.codeblock {
+  background: var(--code-bg);
+  border: 1px solid var(--code-border);
+  border-radius: var(--radius);
+  padding: 1rem 1.1rem;
+  overflow-x: auto;
+  font-family: "Fira Code", "JetBrains Mono", monospace;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--text);
+  white-space: pre;
+}
+
+/* Takeaway / gotcha block */
+.takeaway {
+  margin-top: 1.25rem;
+  padding: 1rem 1.15rem 1rem 1.4rem;
+  background: linear-gradient(90deg, rgba(255, 215, 107, 0.10), rgba(255, 215, 107, 0.02));
+  border-left: 4px solid var(--accent);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  font-size: var(--fs-takeaway);
+  color: var(--text-soft);
+}
+.takeaway strong {
+  font-family: "Days One", sans-serif;
+  color: var(--accent);
+  font-weight: normal;
+  letter-spacing: 0.01em;
+  display: inline-block;
+  margin-right: 0.4rem;
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  padding: 3rem clamp(1rem, 4vw, 2rem);
+  border-top: 1px solid var(--border);
+  text-align: center;
+  color: var(--text-mute);
+  font-size: 0.9rem;
+  background: rgba(0,0,0,0.25);
+}
+.site-footer a { color: var(--accent); text-decoration: none; }
+.site-footer a:hover { text-decoration: underline; }
+.site-footer p { margin: 0.4rem 0; }
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0s !important;
+    transition-duration: 0s !important;
+  }
+}
+
+/* ---------- Print (optional) ---------- */
+@media print {
+  body { background: white; color: black; }
+  .site-header, .toc-drawer, .toc-overlay { display: none !important; }
+  .takeaway { background: #fff8e1; color: #333; border-color: #ffb74d; }
+  .cheat-table .key { background: #f4f4f4; color: #333; border-color: #ccc; }
+}

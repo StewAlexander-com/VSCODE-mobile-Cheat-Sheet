@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+
+  <!-- Primary SEO -->
+  <title>VS Code Mobile Cheat Sheet — Mac &amp; Windows Shortcuts, Tips &amp; Tricks</title>
+  <meta name="description" content="Mobile-first, offline-ready Visual Studio Code cheat sheet. Every shortcut for Mac and Windows — from essentials to rare tips — in a clean two-column layout." />
+  <meta name="author" content="Stewart Alexander" />
+  <meta name="keywords" content="VS Code, Visual Studio Code, cheat sheet, keyboard shortcuts, Mac, Windows, productivity, developer tools, IDE, tips and tricks, mobile, offline, PWA" />
+  <meta name="theme-color" content="#0d1014" />
+  <meta name="color-scheme" content="dark" />
+  <link rel="canonical" href="./" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="VS Code Mobile Cheat Sheet — Mac &amp; Windows" />
+  <meta property="og:description" content="Mobile-first, offline-ready Visual Studio Code cheat sheet. Every shortcut for Mac and Windows — from essentials to rare tips — in a clean two-column layout." />
+  <meta property="og:image" content="./icons/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="VS Code Mobile Cheat Sheet — dark cream-yellow infographic" />
+  <meta property="og:site_name" content="VS Code Mobile Cheat Sheet" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="VS Code Mobile Cheat Sheet — Mac &amp; Windows" />
+  <meta name="twitter:description" content="Mobile-first, offline-ready Visual Studio Code cheat sheet. Every shortcut from essentials to rare tips, in a clean two-column layout." />
+  <meta name="twitter:image" content="./icons/og-image.png" />
+  <meta name="twitter:image:alt" content="VS Code Mobile Cheat Sheet preview" />
+
+  <!-- PWA -->
+  <link rel="manifest" href="./manifest.webmanifest" />
+  <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png" />
+  <link rel="icon" type="image/png" sizes="512x512" href="./icons/icon-512.png" />
+  <link rel="apple-touch-icon" href="./icons/icon-192.png" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="VSCode Cheats" />
+
+  <!-- Fonts: Days One (display), Droid Sans (body), Fira Code (mono) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Days+One&amp;family=Droid+Sans:wght@400;700&amp;family=Fira+Code:wght@400;500&amp;display=swap" />
+
+  <link rel="stylesheet" href="./styles.css" />
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "VS Code Mobile Cheat Sheet — Mac & Windows",
+    "description": "Mobile-first, offline-ready Visual Studio Code cheat sheet covering essentials, multi-cursor, navigation, search, debugging, terminal, Git, hidden gems, and platform-specific quirks.",
+    "author": { "@type": "Person", "name": "Stewart Alexander" },
+    "inLanguage": "en",
+    "about": "Visual Studio Code keyboard shortcuts and productivity tips",
+    "keywords": "VS Code, Visual Studio Code, cheat sheet, keyboard shortcuts, Mac, Windows, productivity, developer tools"
+  }
+  </script>
+</head>
+<body>
+
+  <header class="site-header" role="banner">
+    <a class="brand" href="#top" aria-label="Home — VS Code Mobile Cheat Sheet">
+      <span class="brand-logo" aria-hidden="true">
+        <!-- Inline mark: chevron + dot -->
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 11 14 6 19"></polyline>
+          <line x1="14" y1="5" x2="14" y2="19"></line>
+        </svg>
+      </span>
+      <span class="brand-name">VSCode<span class="dim">·Cheats</span></span>
+    </a>
+
+    <button id="menu-btn" class="menu-btn" aria-label="Open table of contents" aria-expanded="false" aria-controls="toc-drawer">
+      <span class="bars" aria-hidden="true"></span>
+    </button>
+  </header>
+
+  <!-- TOC drawer -->
+  <div id="toc-overlay" class="toc-overlay" aria-hidden="true"></div>
+  <aside id="toc-drawer" class="toc-drawer" role="dialog" aria-modal="true" aria-labelledby="toc-title" aria-hidden="true">
+    <div class="toc-head">
+      <h2 id="toc-title">Table of Contents</h2>
+      <button id="toc-close" class="toc-close" aria-label="Close table of contents">×</button>
+    </div>
+    <ul id="toc-list" class="toc-list"></ul>
+  </aside>
+
+  <a id="top"></a>
+
+  <section class="hero" aria-labelledby="hero-title">
+    <span class="hero-eyebrow">// mobile-first · offline-ready</span>
+    <h1 id="hero-title">VS Code Cheat Sheet</h1>
+    <p class="lede">
+      Every shortcut, command, and quietly-brilliant tip for Visual Studio Code on
+      <strong>Mac</strong> and <strong>Windows</strong> — from the moves you use every day to the ones that
+      make people lean over and ask “how did you do that?”
+    </p>
+    <div class="hero-meta">⌘ Cmd · ⌥ Option/Alt · ⌃ Control · ⇧ Shift</div>
+  </section>
+
+  <main id="main" role="main"></main>
+
+  <footer class="site-footer" role="contentinfo">
+    <p>Verified against the official
+      <a href="https://code.visualstudio.com/shortcuts/keyboard-shortcuts-macos.pdf">macOS</a> and
+      <a href="https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf">Windows</a>
+      VS Code shortcut PDFs and the
+      <a href="https://code.visualstudio.com/docs">official docs</a>.</p>
+    <p>Built mobile-first · works offline once loaded ·
+      <a href="https://github.com/StewAlexander-com/VSCODE-mobile-Cheat-Sheet">source on GitHub</a>.</p>
+  </footer>
+
+  <script src="./data.js"></script>
+  <script src="./app.js" defer></script>
+</body>
+</html>

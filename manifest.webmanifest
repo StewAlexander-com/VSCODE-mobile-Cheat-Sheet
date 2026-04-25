@@ -1,0 +1,17 @@
+{
+  "name": "VS Code Mobile Cheat Sheet",
+  "short_name": "VSCode Cheats",
+  "description": "Mobile-first, offline-ready VS Code cheat sheet. Mac & Windows shortcuts, tips, and tricks.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#0d1014",
+  "theme_color": "#0d1014",
+  "icons": [
+    { "src": "./icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "./icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "./icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "categories": ["productivity", "developer", "education"]
+}
