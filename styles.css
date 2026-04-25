@@ -236,10 +236,39 @@ body {
   line-height: 1.05;
   margin: 0 0 0.5rem;
   letter-spacing: -0.01em;
-  background: linear-gradient(180deg, #fff5d2 0%, #ffd76b 100%);
+  /* Wide multi-stop gradient that slowly slides across the title.
+     200% width so the visible window is half the gradient — plenty of room
+     to drift before looping. */
+  background:
+    linear-gradient(
+      135deg,
+      #ffd76b 0%,
+      #ffe48a 14%,
+      #fff0b8 28%,
+      #fff8de 42%,
+      #fffbef 50%,
+      #fff8de 58%,
+      #fff0b8 72%,
+      #ffe48a 86%,
+      #ffd76b 100%
+    );
+  background-size: 220% 220%;
+  background-position: 0% 50%;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  -webkit-text-fill-color: transparent;
+  animation: titleGradient 3.5s ease-in-out infinite;
+}
+
+@keyframes titleGradient {
+  0%   { background-position:   0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position:   0% 50%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero h1 { animation: none; }
 }
 .hero p.lede {
   margin: 0 auto;
