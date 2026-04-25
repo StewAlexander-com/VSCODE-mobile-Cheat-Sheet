@@ -371,14 +371,27 @@ section.cheat .section-rule {
   .cheat-table td[data-label]::before { content: none !important; }
   .cheat-table td:nth-child(2) { margin-top: 0.35rem; color: var(--text); }
   .cheat-table tbody tr:nth-child(even) td { background: transparent !important; }
-  /* Mac and Win on a single horizontal line, wrapping only if absolutely needed */
+  /* Mac and Win on one line; each platform's pill stays glued to its keychip. */
   .cheat-table .shortcut {
     flex-direction: row;
     flex-wrap: wrap;
     gap: 0.45rem 0.6rem;
     align-items: center;
   }
-  .cheat-table .shortcut .row { gap: 0.35rem; }
+  /* Each pill+key pair is its own no-wrap unit so the pill never strands. */
+  .cheat-table .shortcut .row {
+    flex-wrap: nowrap;
+    gap: 0.35rem;
+    max-width: 100%;
+    min-width: 0;
+  }
+  /* If a key is wider than the row, let the chip itself wrap its text
+     instead of pushing onto a new line. */
+  .cheat-table .shortcut .row .key {
+    white-space: normal;
+    word-break: break-word;
+    min-width: 0;
+  }
 }
 
 /* Code block (settings.json) */
