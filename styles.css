@@ -14,11 +14,11 @@
   --border: rgba(255, 245, 210, 0.10);
   --border-strong: rgba(255, 245, 210, 0.18);
 
-  /* Cream-yellow text scale */
-  --text: #fff5d2;          /* primary */
-  --text-soft: #f6ecbe;     /* secondary */
-  --text-mute: #c9bf99;     /* tertiary */
-  --accent: #ffd76b;        /* warm highlight */
+  /* Mostly white text with a faint warm cast */
+  --text: #fdfaf0;          /* primary — near-white */
+  --text-soft: #f5f1e3;     /* secondary */
+  --text-mute: #d8d3c0;     /* tertiary */
+  --accent: #ffd76b;        /* warm highlight (titles, keys, rules) */
   --accent-2: #f7a93b;      /* deeper accent */
 
   /* Mono code background */
@@ -289,13 +289,48 @@ section.cheat .section-rule {
   border-bottom: 1px solid var(--border-strong);
 }
 .cheat-table tbody td {
-  padding: 0.9rem 1rem;
+  padding: 0.7rem 1.1rem;
   border-bottom: 1px solid var(--border);
   color: var(--text);
-  vertical-align: top;
+  vertical-align: middle;
 }
 .cheat-table tbody tr:last-child td { border-bottom: none; }
-.cheat-table tbody tr:nth-child(even) td { background: rgba(255, 245, 210, 0.02); }
+.cheat-table tbody tr:nth-child(even) td { background: rgba(255, 255, 255, 0.02); }
+
+/* Two-column proportions: ~40% shortcut / ~60% description */
+.cheat-table thead th:nth-child(1),
+.cheat-table tbody td:nth-child(1) { width: 40%; }
+.cheat-table thead th:nth-child(2),
+.cheat-table tbody td:nth-child(2) { width: 60%; }
+
+/* Shortcut column — stacks Mac and Windows with platform labels */
+.cheat-table .shortcut { display: flex; flex-direction: column; gap: 0.35rem; }
+.cheat-table .shortcut .row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+.cheat-table .shortcut .row.note {
+  padding-left: 4px;
+  color: var(--text-mute);
+  font-size: 0.92rem;
+  font-style: italic;
+}
+.cheat-table .shortcut .plat {
+  font-family: "Days One", sans-serif;
+  font-size: 0.62rem;
+  letter-spacing: 0.10em;
+  color: var(--accent);
+  text-transform: uppercase;
+  background: rgba(255, 215, 107, 0.10);
+  border: 1px solid var(--code-border);
+  border-radius: 999px;
+  padding: 0.18rem 0.55rem;
+  flex: 0 0 auto;
+  min-width: 56px;
+  text-align: center;
+}
 .cheat-table .key {
   font-family: "Fira Code", "JetBrains Mono", monospace;
   font-size: var(--fs-mono);
@@ -303,11 +338,11 @@ section.cheat .section-rule {
   background: var(--code-bg);
   border: 1px solid var(--code-border);
   border-radius: var(--radius-sm);
-  padding: 0.18rem 0.5rem;
+  padding: 0.22rem 0.55rem;
   white-space: nowrap;
   display: inline-block;
 }
-.cheat-table .desc { color: var(--text-soft); }
+.cheat-table .desc { color: var(--text); }
 
 /* Mobile: card list (portrait) */
 @media (max-width: 640px) and (orientation: portrait) {
@@ -319,12 +354,13 @@ section.cheat .section-rule {
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: var(--radius);
-    padding: 0.85rem 1rem;
+    padding: 0.95rem 1.05rem;
     margin-bottom: 0.85rem;
   }
   .cheat-table td {
     display: block;
     padding: 0;
+    width: auto !important;
     border: none !important;
     background: transparent !important;
   }
@@ -336,10 +372,11 @@ section.cheat .section-rule {
     letter-spacing: 0.08em;
     color: var(--accent);
     text-transform: uppercase;
-    margin: 0.6rem 0 0.25rem;
+    margin: 0.85rem 0 0.4rem;
   }
   .cheat-table td:first-child[data-label]::before { margin-top: 0; }
   .cheat-table tbody tr:nth-child(even) td { background: transparent !important; }
+  .cheat-table .shortcut { gap: 0.55rem; }
 }
 
 /* Code block (settings.json) */
