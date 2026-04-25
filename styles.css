@@ -30,7 +30,7 @@
   --fs-mono: 15px;
   --fs-h1: clamp(1.9rem, 5.4vw, 3rem);
   --fs-h2: clamp(1.35rem, 3.6vw, 1.85rem);
-  --fs-takeaway: clamp(0.95rem, 2.1vw, 1.05rem);
+  --fs-takeaway: clamp(1.05rem, 2.4vw, 1.18rem);
 
   --radius: 12px;
   --radius-sm: 7px;
@@ -420,13 +420,13 @@ section.cheat .section-rule {
 /* Takeaway / gotcha block */
 .takeaway {
   margin-top: 0.7rem;
-  padding: 0.65rem 0.9rem 0.65rem 1rem;
+  padding: 0.85rem 1rem 0.85rem 1.1rem;
   background: linear-gradient(90deg, rgba(255, 215, 107, 0.10), rgba(255, 215, 107, 0.02));
   border-left: 3px solid var(--accent);
   border-radius: 0 var(--radius) var(--radius) 0;
   font-size: var(--fs-takeaway);
   color: var(--text-soft);
-  line-height: 1.45;
+  line-height: 1.5;
 }
 .takeaway strong {
   font-family: "Days One", sans-serif;
