@@ -4,9 +4,9 @@ A mobile-first, offline-ready Visual Studio Code cheat sheet — every shortcut,
 
 ## 🔗 Live cheat sheet
 
-**[Open the cheat sheet →](https://www.perplexity.ai/computer/a/vs-code-mobile-cheat-sheet-CGvXBeMiTbSKMvmc.O1rew)**
+**[Open the cheat sheet →](https://stewalexander-com.github.io/VSCODE-mobile-Cheat-Sheet/)**
 
-Once loaded, the page works offline (service worker caches the app shell + Google Fonts). On Chrome / Edge / Safari you can also "Add to Home Screen" or install it as a PWA.
+Served from GitHub Pages. Once loaded, the page works offline (service worker caches the app shell + Google Fonts). On Chrome / Edge / Safari you can also "Add to Home Screen" or install it as a PWA.
 
 ![Cheat sheet preview](icons/og-image.png)
 
