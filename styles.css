@@ -345,7 +345,7 @@ section.cheat .section-rule {
   display: inline-block;
   line-height: 1.4;
   /* Breathing room between glyphs so Mac modifier symbols (⇧⌘⌥⌃) don't visually merge */
-  letter-spacing: 0.04em;
+  letter-spacing: 0.10em;
 }
 .cheat-table .desc { color: var(--text); }
 
