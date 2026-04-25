@@ -26,14 +26,14 @@
   --code-border: rgba(255, 215, 107, 0.18);
 
   /* Type sizes — generous for readability with glasses */
-  --fs-base: 17px;          /* phone body */
-  --fs-mono: 16px;
-  --fs-h1: clamp(2rem, 6vw, 3.4rem);
-  --fs-h2: clamp(1.5rem, 4.2vw, 2.2rem);
-  --fs-takeaway: clamp(1rem, 2.4vw, 1.1rem);
+  --fs-base: 16px;          /* phone body */
+  --fs-mono: 15px;
+  --fs-h1: clamp(1.9rem, 5.4vw, 3rem);
+  --fs-h2: clamp(1.35rem, 3.6vw, 1.85rem);
+  --fs-takeaway: clamp(0.95rem, 2.1vw, 1.05rem);
 
-  --radius: 14px;
-  --radius-sm: 8px;
+  --radius: 12px;
+  --radius-sm: 7px;
   --maxw: 1180px;
 }
 
@@ -65,7 +65,7 @@ body {
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  padding: 0.85rem clamp(1rem, 4vw, 2rem);
+  padding: 0.55rem clamp(1rem, 4vw, 2rem);
   background: rgba(13, 16, 20, 0.78);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -99,8 +99,8 @@ body {
   appearance: none;
   background: transparent;
   border: 1px solid var(--border-strong);
-  border-radius: 10px;
-  width: 44px; height: 44px;
+  border-radius: 9px;
+  width: 38px; height: 38px;
   display: grid; place-items: center;
   cursor: pointer;
   color: var(--text);
@@ -202,7 +202,7 @@ body {
 
 /* ---------- Hero ---------- */
 .hero {
-  padding: clamp(2.5rem, 7vw, 5rem) clamp(1rem, 4vw, 2rem) clamp(2rem, 5vw, 3rem);
+  padding: clamp(1.25rem, 3.2vw, 2.25rem) clamp(1rem, 4vw, 2rem) clamp(1rem, 2.4vw, 1.5rem);
   max-width: var(--maxw);
   margin: 0 auto;
   text-align: center;
@@ -210,19 +210,19 @@ body {
 .hero-eyebrow {
   display: inline-block;
   font-family: "Fira Code", monospace;
-  font-size: 0.85rem;
+  font-size: 0.78rem;
   color: var(--accent);
   border: 1px solid var(--code-border);
-  padding: 0.3rem 0.7rem;
+  padding: 0.22rem 0.6rem;
   border-radius: 999px;
-  margin-bottom: 1.25rem;
+  margin-bottom: 0.7rem;
   background: rgba(255, 215, 107, 0.06);
 }
 .hero h1 {
   font-family: "Days One", sans-serif;
   font-size: var(--fs-h1);
   line-height: 1.05;
-  margin: 0 0 0.75rem;
+  margin: 0 0 0.5rem;
   letter-spacing: -0.01em;
   background: linear-gradient(180deg, #fff5d2 0%, #ffd76b 100%);
   -webkit-background-clip: text;
@@ -233,12 +233,13 @@ body {
   margin: 0 auto;
   max-width: 60ch;
   color: var(--text-soft);
-  font-size: clamp(1rem, 2.4vw, 1.15rem);
+  font-size: clamp(0.95rem, 2vw, 1.05rem);
+  line-height: 1.45;
 }
 .hero-meta {
-  margin-top: 1.5rem;
+  margin-top: 0.7rem;
   font-family: "Fira Code", monospace;
-  font-size: 0.85rem;
+  font-size: 0.78rem;
   color: var(--text-mute);
 }
 
@@ -246,23 +247,23 @@ body {
 main {
   max-width: var(--maxw);
   margin: 0 auto;
-  padding: 0 clamp(1rem, 4vw, 2rem) 4rem;
+  padding: 0 clamp(1rem, 4vw, 2rem) 2rem;
 }
 section.cheat {
-  padding-top: clamp(2.5rem, 6vw, 4rem);
-  scroll-margin-top: 80px;
+  padding-top: clamp(1.25rem, 3vw, 2rem);
+  scroll-margin-top: 72px;
 }
 section.cheat h2 {
   font-family: "Days One", sans-serif;
   font-size: var(--fs-h2);
   letter-spacing: -0.01em;
-  margin: 0 0 1.25rem;
+  margin: 0 0 0.5rem;
   color: var(--accent);
 }
 section.cheat .section-rule {
   height: 1px;
   background: linear-gradient(90deg, var(--accent) 0%, transparent 70%);
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.7rem;
   opacity: 0.6;
 }
 
@@ -281,18 +282,19 @@ section.cheat .section-rule {
   background: rgba(255, 215, 107, 0.08);
   color: var(--accent);
   font-family: "Days One", sans-serif;
-  font-size: 0.85rem;
+  font-size: 0.78rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   text-align: left;
-  padding: 0.85rem 1rem;
+  padding: 0.55rem 0.9rem;
   border-bottom: 1px solid var(--border-strong);
 }
 .cheat-table tbody td {
-  padding: 0.7rem 1.1rem;
+  padding: 0.45rem 0.9rem;
   border-bottom: 1px solid var(--border);
   color: var(--text);
   vertical-align: middle;
+  line-height: 1.4;
 }
 .cheat-table tbody tr:last-child td { border-bottom: none; }
 .cheat-table tbody tr:nth-child(even) td { background: rgba(255, 255, 255, 0.02); }
@@ -304,31 +306,31 @@ section.cheat .section-rule {
 .cheat-table tbody td:nth-child(2) { width: 60%; }
 
 /* Shortcut column — stacks Mac and Windows with platform labels */
-.cheat-table .shortcut { display: flex; flex-direction: column; gap: 0.35rem; }
+.cheat-table .shortcut { display: flex; flex-direction: column; gap: 0.2rem; }
 .cheat-table .shortcut .row {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 0.45rem;
   flex-wrap: wrap;
 }
 .cheat-table .shortcut .row.note {
   padding-left: 4px;
   color: var(--text-mute);
-  font-size: 0.92rem;
+  font-size: 0.86rem;
   font-style: italic;
 }
 .cheat-table .shortcut .plat {
   font-family: "Days One", sans-serif;
-  font-size: 0.62rem;
-  letter-spacing: 0.10em;
+  font-size: 0.58rem;
+  letter-spacing: 0.08em;
   color: var(--accent);
   text-transform: uppercase;
   background: rgba(255, 215, 107, 0.10);
   border: 1px solid var(--code-border);
   border-radius: 999px;
-  padding: 0.18rem 0.55rem;
+  padding: 0.1rem 0.45rem;
   flex: 0 0 auto;
-  min-width: 56px;
+  min-width: 42px;
   text-align: center;
 }
 .cheat-table .key {
@@ -338,9 +340,10 @@ section.cheat .section-rule {
   background: var(--code-bg);
   border: 1px solid var(--code-border);
   border-radius: var(--radius-sm);
-  padding: 0.22rem 0.55rem;
+  padding: 0.12rem 0.45rem;
   white-space: nowrap;
   display: inline-block;
+  line-height: 1.4;
 }
 .cheat-table .desc { color: var(--text); }
 
@@ -354,8 +357,8 @@ section.cheat .section-rule {
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: var(--radius);
-    padding: 0.95rem 1.05rem;
-    margin-bottom: 0.85rem;
+    padding: 0.55rem 0.7rem;
+    margin-bottom: 0.4rem;
   }
   .cheat-table td {
     display: block;
@@ -364,19 +367,11 @@ section.cheat .section-rule {
     border: none !important;
     background: transparent !important;
   }
-  .cheat-table td[data-label]::before {
-    content: attr(data-label);
-    display: block;
-    font-family: "Days One", sans-serif;
-    font-size: 0.7rem;
-    letter-spacing: 0.08em;
-    color: var(--accent);
-    text-transform: uppercase;
-    margin: 0.85rem 0 0.4rem;
-  }
-  .cheat-table td:first-child[data-label]::before { margin-top: 0; }
+  /* No "SHORTCUT" / "WHAT IT DOES" labels on mobile — the layout speaks for itself */
+  .cheat-table td[data-label]::before { content: none !important; }
+  .cheat-table td:nth-child(2) { margin-top: 0.35rem; color: var(--text); }
   .cheat-table tbody tr:nth-child(even) td { background: transparent !important; }
-  .cheat-table .shortcut { gap: 0.55rem; }
+  .cheat-table .shortcut { gap: 0.2rem; }
 }
 
 /* Code block (settings.json) */
@@ -384,24 +379,25 @@ section.cheat .section-rule {
   background: var(--code-bg);
   border: 1px solid var(--code-border);
   border-radius: var(--radius);
-  padding: 1rem 1.1rem;
+  padding: 0.85rem 1rem;
   overflow-x: auto;
   font-family: "Fira Code", "JetBrains Mono", monospace;
-  font-size: 0.95rem;
-  line-height: 1.55;
+  font-size: 0.88rem;
+  line-height: 1.45;
   color: var(--text);
   white-space: pre;
 }
 
 /* Takeaway / gotcha block */
 .takeaway {
-  margin-top: 1.25rem;
-  padding: 1rem 1.15rem 1rem 1.4rem;
+  margin-top: 0.7rem;
+  padding: 0.65rem 0.9rem 0.65rem 1rem;
   background: linear-gradient(90deg, rgba(255, 215, 107, 0.10), rgba(255, 215, 107, 0.02));
-  border-left: 4px solid var(--accent);
+  border-left: 3px solid var(--accent);
   border-radius: 0 var(--radius) var(--radius) 0;
   font-size: var(--fs-takeaway);
   color: var(--text-soft);
+  line-height: 1.45;
 }
 .takeaway strong {
   font-family: "Days One", sans-serif;
@@ -409,21 +405,22 @@ section.cheat .section-rule {
   font-weight: normal;
   letter-spacing: 0.01em;
   display: inline-block;
-  margin-right: 0.4rem;
+  margin-right: 0.35rem;
 }
 
 /* ---------- Footer ---------- */
 .site-footer {
-  padding: 3rem clamp(1rem, 4vw, 2rem);
+  padding: 1.5rem clamp(1rem, 4vw, 2rem);
   border-top: 1px solid var(--border);
   text-align: center;
   color: var(--text-mute);
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   background: rgba(0,0,0,0.25);
+  line-height: 1.5;
 }
 .site-footer a { color: var(--accent); text-decoration: none; }
 .site-footer a:hover { text-decoration: underline; }
-.site-footer p { margin: 0.4rem 0; }
+.site-footer p { margin: 0.25rem 0; }
 
 /* ---------- Reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {
