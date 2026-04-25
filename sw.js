@@ -1,6 +1,6 @@
 /* VS Code Mobile Cheat Sheet — service worker
    Cache-first for app shell, stale-while-revalidate for fonts. */
-const CACHE = "vscs-v4";
+const CACHE = "vscs-v5";
 const SHELL = [
   "./",
   "./index.html",

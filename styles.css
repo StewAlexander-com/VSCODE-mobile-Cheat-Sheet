@@ -258,7 +258,9 @@ body {
   background-clip: text;
   color: transparent;
   -webkit-text-fill-color: transparent;
-  animation: titleGradient 3.5s ease-in-out infinite;
+  /* 4.375s = 3.5s + 25%. cubic-bezier(0.45,0,0.55,1) is a near-linear ease that
+     keeps the sweep super-smooth at the turnaround points without harsh stops. */
+  animation: titleGradient 4.375s cubic-bezier(0.45, 0, 0.55, 1) infinite;
 }
 
 @keyframes titleGradient {
