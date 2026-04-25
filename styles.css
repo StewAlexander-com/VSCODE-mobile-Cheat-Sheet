@@ -9,8 +9,9 @@
   --bg-1: #0d1014;
   --bg-2: #16191f;
   --bg-3: #1c2026;
-  --surface: rgba(255, 245, 210, 0.04);
-  --surface-2: rgba(255, 245, 210, 0.07);
+  /* Card surfaces — lifted ~5% off the body for clearer separation */
+  --surface: rgba(255, 245, 210, 0.09);
+  --surface-2: rgba(255, 245, 210, 0.12);
   --border: rgba(255, 245, 210, 0.10);
   --border-strong: rgba(255, 245, 210, 0.18);
 
@@ -264,12 +265,28 @@ section.cheat {
   padding-top: clamp(1.25rem, 3vw, 2rem);
   scroll-margin-top: 72px;
 }
+/* Subtitle gradient — yellow-white (upper-left) → white-cream (lower-right),
+   45° with extra-smooth multi-stop interpolation. */
 section.cheat h2 {
   font-family: "Days One", sans-serif;
   font-size: var(--fs-h2);
   letter-spacing: -0.01em;
   margin: 0 0 0.5rem;
-  color: var(--accent);
+  background: linear-gradient(
+    135deg,
+    #ffe680 0%,
+    #fff0a8 16%,
+    #fff6c8 33%,
+    #fff9dc 50%,
+    #fffbe9 67%,
+    #fffcf0 84%,
+    #fff8e5 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  /* Fallback for engines that ignore background-clip on text */
+  -webkit-text-fill-color: transparent;
 }
 section.cheat .section-rule {
   height: 1px;
