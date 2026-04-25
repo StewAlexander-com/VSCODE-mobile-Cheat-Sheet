@@ -371,7 +371,14 @@ section.cheat .section-rule {
   .cheat-table td[data-label]::before { content: none !important; }
   .cheat-table td:nth-child(2) { margin-top: 0.35rem; color: var(--text); }
   .cheat-table tbody tr:nth-child(even) td { background: transparent !important; }
-  .cheat-table .shortcut { gap: 0.2rem; }
+  /* Mac and Win on a single horizontal line, wrapping only if absolutely needed */
+  .cheat-table .shortcut {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.45rem 0.6rem;
+    align-items: center;
+  }
+  .cheat-table .shortcut .row { gap: 0.35rem; }
 }
 
 /* Code block (settings.json) */
