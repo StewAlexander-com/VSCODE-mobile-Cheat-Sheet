@@ -98,17 +98,26 @@
     return `<pre class="codeblock"><code>${escapeHTML(section.code)}</code></pre>`;
   }
 
-  function renderSection(section) {
+  function renderSection(section, idx) {
     const body =
       section.kind === "code" ? renderCode(section) : renderTable(section);
+    // First section opens by default; the rest start collapsed.
+    const open = idx === 0 ? " open" : "";
     return `
       <section class="cheat" id="${section.id}" aria-labelledby="${section.id}-title">
-        <h2 id="${section.id}-title">${escapeHTML(section.title)}</h2>
-        <div class="section-rule" aria-hidden="true"></div>
-        ${body}
-        <div class="takeaway">
-          <strong>Takeaway / gotcha:</strong> ${escapeHTML(section.takeaway)}
-        </div>
+        <details class="sec-details"${open}>
+          <summary class="sec-summary">
+            <h2 id="${section.id}-title">${escapeHTML(section.title)}</h2>
+            <span class="sec-chevron" aria-hidden="true">›</span>
+          </summary>
+          <div class="section-rule" aria-hidden="true"></div>
+          <div class="sec-body">
+            ${body}
+            <div class="takeaway">
+              <strong>Takeaway / gotcha:</strong> ${escapeHTML(section.takeaway)}
+            </div>
+          </div>
+        </details>
       </section>
     `;
   }
@@ -147,11 +156,35 @@
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && drawer.classList.contains("open")) closeDrawer();
   });
+  // TOC click: auto-expand the target section, then close the drawer.
+  // Use the click event (vs. just hash navigation) so we can run before the jump.
   tocList.addEventListener("click", (e) => {
     const a = e.target.closest("a[data-toc]");
     if (!a) return;
+    const id = a.getAttribute("href").replace(/^#/, "");
+    const target = document.getElementById(id);
+    if (target) {
+      const det = target.querySelector(".sec-details");
+      if (det && !det.open) det.open = true;
+    }
     closeDrawer();
   });
+
+  // If the page loads with a hash (or the user changes it), expand that section.
+  function expandFromHash() {
+    const id = location.hash.replace(/^#/, "");
+    if (!id) return;
+    const target = document.getElementById(id);
+    if (!target) return;
+    const det = target.querySelector(".sec-details");
+    if (det && !det.open) det.open = true;
+    // Re-scroll after expand so the section lands at the top.
+    requestAnimationFrame(() => {
+      target.scrollIntoView({ block: "start", behavior: "smooth" });
+    });
+  }
+  window.addEventListener("hashchange", expandFromHash);
+  expandFromHash();
 
   // ---------- Service worker ----------
   if ("serviceWorker" in navigator) {
@@ -165,4 +198,18 @@
   // No custom install banner — modern browsers expose a native install affordance
   // in the address bar once the manifest + service worker are valid, and we don't
   // want to obscure cheat-sheet content.
+
+  // ---------- Scroll-to-top FAB ----------
+  const fab = document.getElementById("scroll-top");
+  if (fab) {
+    const onScroll = () => {
+      if (window.scrollY > 600) fab.classList.add("show");
+      else fab.classList.remove("show");
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    fab.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
 })();
