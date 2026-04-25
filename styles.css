@@ -385,16 +385,16 @@ section.cheat .section-rule {
     max-width: 100%;
     min-width: 0;
   }
-  /* Slightly larger pill text on mobile for legibility */
+  /* Larger pill text on mobile for legibility */
   .cheat-table .shortcut .plat {
-    font-size: 0.78rem;
-    padding: 0.18rem 0.6rem;
-    min-width: 50px;
+    font-size: 0.95rem;
+    padding: 0.22rem 0.75rem;
+    min-width: 60px;
   }
-  /* Slightly larger keychip text on mobile */
+  /* Larger keychip text on mobile */
   .cheat-table .shortcut .row .key {
-    font-size: 1rem;
-    padding: 0.18rem 0.55rem;
+    font-size: 1.15rem;
+    padding: 0.22rem 0.65rem;
     white-space: normal;
     word-break: break-word;
     min-width: 0;
