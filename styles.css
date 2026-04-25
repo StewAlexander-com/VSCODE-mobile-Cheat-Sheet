@@ -321,16 +321,16 @@ section.cheat .section-rule {
 }
 .cheat-table .shortcut .plat {
   font-family: "Days One", sans-serif;
-  font-size: 0.58rem;
+  font-size: 0.66rem;
   letter-spacing: 0.08em;
   color: var(--accent);
   text-transform: uppercase;
   background: rgba(255, 215, 107, 0.10);
   border: 1px solid var(--code-border);
   border-radius: 999px;
-  padding: 0.1rem 0.45rem;
+  padding: 0.14rem 0.55rem;
   flex: 0 0 auto;
-  min-width: 42px;
+  min-width: 46px;
   text-align: center;
 }
 .cheat-table .key {
@@ -385,9 +385,16 @@ section.cheat .section-rule {
     max-width: 100%;
     min-width: 0;
   }
-  /* If a key is wider than the row, let the chip itself wrap its text
-     instead of pushing onto a new line. */
+  /* Slightly larger pill text on mobile for legibility */
+  .cheat-table .shortcut .plat {
+    font-size: 0.78rem;
+    padding: 0.18rem 0.6rem;
+    min-width: 50px;
+  }
+  /* Slightly larger keychip text on mobile */
   .cheat-table .shortcut .row .key {
+    font-size: 1rem;
+    padding: 0.18rem 0.55rem;
     white-space: normal;
     word-break: break-word;
     min-width: 0;
